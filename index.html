@@ -1,0 +1,98 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Counterpoint — an accompanist that listens</title>
+  <meta name="description" content="Play, sing or hum — Counterpoint detects your key and melody in real time and a from-scratch synthesized band plays along with music-theory-driven harmony.">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Instrument+Serif:ital@0;1&family=Inter:wght@400;500;600;700&family=JetBrains+Mono:wght@400;600&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="style.css">
+  <link rel="icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'><circle cx='50' cy='50' r='44' fill='none' stroke='%23f5c46b' stroke-width='8'/><circle cx='50' cy='50' r='14' fill='%23ff6b4a'/></svg>">
+</head>
+<body>
+  <div id="overlay" class="overlay">
+    <div class="overlay-card">
+      <div class="wordmark big">Counterpoint</div>
+      <p class="lede" data-i18n="tagline"></p>
+      <p class="sub" data-i18n="enterSub"></p>
+      <button id="enter" class="btn primary big" data-i18n="enter"></button>
+      <p class="hint" data-i18n="enterHint"></p>
+      <div class="lang-row">
+        <button class="lang-pick" data-lang="en">English</button>
+        <button class="lang-pick" data-lang="fr">Français</button>
+      </div>
+    </div>
+  </div>
+
+  <header class="top">
+    <div class="brand">
+      <span class="wordmark">Counterpoint</span>
+      <span class="tag" data-i18n="tagline"></span>
+    </div>
+    <div class="transport">
+      <button id="play" class="btn primary"><span id="playIco" class="ico">▶</span><span id="playTxt" data-i18n="play"></span></button>
+      <button id="demo" class="btn"><span id="demoTxt" data-i18n="demo"></span></button>
+      <label class="tempo"><span data-i18n="tempo"></span><input id="tempo" type="range" min="60" max="160" value="120"><output id="tempoOut">120</output></label>
+      <div class="beats" id="beats"><i></i><i></i><i></i><i></i></div>
+    </div>
+    <div class="io">
+      <button id="mic" class="btn"><span class="dot"></span><span id="micTxt" data-i18n="mic"></span></button>
+      <span id="midi" class="pill"></span>
+      <button id="lang" class="btn ghost" aria-label="Language">FR</button>
+    </div>
+  </header>
+
+  <nav id="styles" class="styles"></nav>
+
+  <main class="grid">
+    <section class="card now">
+      <div class="label" data-i18n="key"></div>
+      <div class="keyname" id="keyName">—</div>
+      <div class="conf"><div class="bar"><i id="confBar"></i></div><span id="confTxt"></span></div>
+      <div class="label gap" data-i18n="chord"></div>
+      <div class="chordname" id="chordName">—</div>
+      <div class="roman"><span id="roman">—</span><span id="func" class="func"></span></div>
+      <div class="you"><span class="label" data-i18n="youPlay"></span><span id="youPlay">—</span><span id="tuner" class="tuner"></span></div>
+    </section>
+
+    <section class="card circle">
+      <header><h2 data-i18n="circle"></h2><p data-i18n="circleSub"></p></header>
+      <canvas id="circle"></canvas>
+    </section>
+
+    <section class="card brain">
+      <header><h2 data-i18n="brain"></h2><p data-i18n="brainSub"></p></header>
+      <div id="brainRows" class="rows"></div>
+      <div id="brainFoot" class="brainfoot"></div>
+    </section>
+
+    <section class="card chroma">
+      <header><h2 data-i18n="chroma"></h2><p data-i18n="chromaSub"></p></header>
+      <canvas id="chroma"></canvas>
+    </section>
+
+    <section class="card timeline">
+      <header><h2 data-i18n="timeline"></h2></header>
+      <div id="timeline" class="chips"></div>
+    </section>
+
+    <section class="card spectro">
+      <header><h2 data-i18n="spectro"></h2></header>
+      <canvas id="spectro"></canvas>
+    </section>
+
+    <section class="card keys">
+      <header><h2 data-i18n="keys"></h2><p data-i18n="keysHint"></p></header>
+      <canvas id="piano"></canvas>
+    </section>
+  </main>
+
+  <footer class="foot">
+    YIN pitch detection · Krumhansl–Kessler key finding · functional-harmony model · voice-leading search · FM, Karplus–Strong &amp; additive synthesis — all hand-written, zero samples, zero dependencies.
+  </footer>
+
+  <script type="module" src="js/main.js"></script>
+</body>
+</html>
