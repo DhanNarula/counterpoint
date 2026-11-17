@@ -115,7 +115,9 @@ button { font: inherit; color: inherit; }
 .card header p { margin: 4px 0 10px; font-size: 12px; color: var(--ink-3); line-height: 1.45; }
 .now { grid-area: now; }
 .circle { grid-area: circle; display: flex; flex-direction: column; }
-.circle canvas { flex: 1; width: 100%; min-height: 340px; }
+/* Size comes from the layout (width) only, never from the canvas's own pixel
+   buffer — otherwise each resize feeds back into the next and the page grows. */
+.circle canvas { display: block; width: 100%; max-width: 520px; height: auto; aspect-ratio: 1 / 1; margin: auto; }
 .brain { grid-area: brain; display: flex; flex-direction: column; }
 .chroma { grid-area: chroma; }
 .chroma canvas { width: 100%; height: 130px; display: block; }
@@ -179,5 +181,5 @@ button { font: inherit; color: inherit; }
   .top, .styles, .grid { padding-left: 16px; padding-right: 16px; }
   .styles { grid-template-columns: repeat(2, minmax(0, 1fr)); }
   .grid { grid-template-columns: minmax(0, 1fr); grid-template-areas: "now" "circle" "brain" "chroma" "time" "spectro" "keys"; }
-  .circle canvas { min-height: 300px; }
+  .circle canvas { max-width: 420px; }
 }
